@@ -53,6 +53,7 @@ class unit(IntEnum):
     BARO_REL = 21
     BARO_ABS = 22
     RAIN_RATE = 23
+    HEAT_INDEX = 24
 
 
 @unique
@@ -95,6 +96,7 @@ class BasePlugin:
         [unit.BARO_REL, "Barometer (relative)", 243, 26, {}, used.YES],
         [unit.BARO_ABS, "Barometer (absolute)", 243, 26, {}, used.YES],
         [unit.RAIN_RATE, "Rain rate", 243, 31, {"Custom": "0;mm/h"}, used.YES],
+        [unit.HEAT_INDEX, "Heat index", 80, 5, {}, used.YES],
     ]
 
     def __init__(self):
@@ -250,11 +252,17 @@ class BasePlugin:
                 baromabs = round(baromabs) if baromabs is not None else None
                 rainmm = round(rainmm, 2) if rainmm is not None else None
                 dailyrainmm = round(dailyrainmm, 2) if dailyrainmm is not None else None
-                solarradiation = round(solarradiation, 1) if solarradiation is not None else None
+                solarradiation = (
+                    round(solarradiation, 1) if solarradiation is not None else None
+                )
                 # Update devices
                 UpdateDevice(unit.TEMP_IND, 0, "{}".format(tempin))
                 UpdateDevice(unit.TEMP, 0, "{}".format(temp))
-                UpdateDevice(unit.HUMIDITY, int(humidity) if humidity is not None else 0, "{}".format(humiditystatus))
+                UpdateDevice(
+                    unit.HUMIDITY,
+                    int(humidity) if humidity is not None else 0,
+                    "{}".format(humiditystatus),
+                )
                 UpdateDevice(
                     unit.HUMIDITY_IND,
                     int(humidityin) if humidityin is not None else 0,
@@ -304,10 +312,18 @@ class BasePlugin:
                 UpdateDevice(unit.GUST, 0, "{}".format(windgustms))
                 UpdateDevice(unit.WIND_DIRECTION, 0, "{}".format(winddir))
                 UpdateDevice(
-                    unit.SOLAR, int(solarradiation) if solarradiation is not None else 0, "{}".format(solarradiation)
+                    unit.SOLAR,
+                    int(solarradiation) if solarradiation is not None else 0,
+                    "{}".format(solarradiation),
                 )
-                UpdateDevice(unit.UVI, int(uv) if uv is not None else 0, "{};{}".format(uv, temp))
-                UpdateDevice(unit.UV_ALERT, uv2status(uv) if uv is not None else 0, "{} UVI".format(uv))
+                UpdateDevice(
+                    unit.UVI, int(uv) if uv is not None else 0, "{};{}".format(uv, temp)
+                )
+                UpdateDevice(
+                    unit.UV_ALERT,
+                    uv2status(uv) if uv is not None else 0,
+                    "{} UVI".format(uv),
+                )
                 UpdateDevice(
                     unit.STATION,
                     0,
@@ -335,6 +351,9 @@ class BasePlugin:
                     AlwaysUpdate=True,
                 )
                 UpdateDevice(unit.RAIN_RATE, 0, "{}".format(rainmm))
+                UpdateDevice(
+                    unit.HEAT_INDEX, 0, "{}".format(heat_index(temp, humidity))
+                )
 
     def onStart(self):
         if Parameters["Mode6"] == "Debug":
@@ -722,6 +741,47 @@ def speed2options(unit):
             return {}
     else:
         return {}
+
+
+def heat_index(temp, humidity):
+    """Calculate heat index (in C)
+    Formula can be found at https://en.wikipedia.org/wiki/Heat_index
+    Args:
+        temp    : temperature in C
+        humidity: in %
+    Returns:
+        calculated heat index
+    """
+    Domoticz.Debug("temp:     {}".format(temp))
+    Domoticz.Debug("humidity: {}".format(humidity))
+    if 0 <= humidity <= 100 and temp >= 26:
+        c1 = -8.78469475556
+        c2 = 1.61139411
+        c3 = 2.33854883889
+        c4 = -0.14611605
+        c5 = -0.012308094
+        c6 = -0.0164248277778
+        c7 = 0.002211732
+        c8 = 0.00072546
+        c9 = -0.000003582
+
+        tempp = temp ** 2
+        humidityp = humidity ** 2
+
+        hi = (
+            c1
+            + c2 * temp
+            + c3 * humidity
+            + c4 * temp * humidity
+            + c5 * tempp
+            + c6 * humidityp
+            + c7 * tempp * humidity
+            + c8 * temp * humidityp
+            + c9 * tempp * humidityp
+        )
+    else:
+        hi = temp
+    return round(hi, 1)
 
 
 def float_or_none(value):

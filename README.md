@@ -75,7 +75,6 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
     ```
     sudo service domoticz.sh restart
     ```
-If new devices are added in the plugin, you have to remove the hardware and add it again (sorry!).
 
 ## Parameters
 | Name     | Description
@@ -94,6 +93,7 @@ I have created as much devices as possible, so you can select your own favourite
 | **Chill**                | Chill (calculated when `Ecowitt` protocol is used)
 | **Dew point**            | Dew point (calculated when `Ecowitt` protocol is used)
 | **Gust**                 | Gust
+| **Heat index**           | Heat index (calculated)
 | **Humidity**             | Humidity
 | **Humidity (indoor)**    | Humidity (indoor)
 | **Rain**                 | Current rain rate and daily total
