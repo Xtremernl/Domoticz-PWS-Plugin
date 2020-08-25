@@ -754,6 +754,7 @@ def heat_index(temp, humidity):
     """
     Domoticz.Debug("temp:     {}".format(temp))
     Domoticz.Debug("humidity: {}".format(humidity))
+    
     if 0 <= humidity <= 100 and temp >= 26:
         c1 = -8.78469475556
         c2 = 1.61139411

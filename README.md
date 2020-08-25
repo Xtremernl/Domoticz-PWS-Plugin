@@ -93,7 +93,7 @@ I have created as much devices as possible, so you can select your own favourite
 | **Chill**                | Chill (calculated when `Ecowitt` protocol is used)
 | **Dew point**            | Dew point (calculated when `Ecowitt` protocol is used)
 | **Gust**                 | Gust
-| **Heat index**           | Heat index (calculated)
+| **Heat index**           | Heat index (calculated based on temperature and humidity)
 | **Humidity**             | Humidity
 | **Humidity (indoor)**    | Humidity (indoor)
 | **Rain**                 | Current rain rate and daily total
