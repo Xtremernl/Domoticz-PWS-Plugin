@@ -11,6 +11,7 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 * Alecto WS-5500
 * Garni 940
 * Garni 2055 Arcus
+* Sainlogic WS3500
 * Ventus W830
 * Waldbeck Halley Professional Weather Station
 
