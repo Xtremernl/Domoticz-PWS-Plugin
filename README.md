@@ -4,7 +4,7 @@ This Domoticz Plugin allows you to get the data **directly** from your own perso
 **This plugin will directly capture the data from your weather station!** 
 
 ## Supported devices
-In general, if the station is supplied with `EasyWeather` software (version 1.4.x), it is likely that the station will work with this Domoticz plugin!
+In general, if the station is supplied with `EasyWeather` software (version 1.4.x, 1.5.x), it is likely that the station will work with this Domoticz plugin!
 
 ### Tested
 
@@ -23,7 +23,10 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 * 1.5.3
 
 ## Prerequisites
-Your PWS needs to be connected to your router by `WS View` (and also the 'older' `WS Tool`). With this application you can connect your PWS to the router, so that your PWS can upload weather data to Domoticz.
+Your PWS needs to be connected to your network. This can be done by using [WS View](#ws view)
+
+### WS View (WS Tool)
+ by `WS View` (and also the 'older' `WS Tool`). With this application you can connect your PWS to the router, so that your PWS can upload weather data to Domoticz.
 
 1. Install `WS View` on your mobile device
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsview)
@@ -48,6 +51,9 @@ Your PWS needs to be connected to your router by `WS View` (and also the 'older'
 
 Now your PWS will start to upload its data to your Domoticz server at the specified port. 
 
+### Garni
+
+### Configure Domoticz plugin
 Next step is to install the Domoticz plugin. This plugin will automatically create the required devices, listen to the specified port, retrieve the data and update the devices with the latest information.
 
 Unfortunately you can connect your PWS only to **one** Domoticz server!
