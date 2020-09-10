@@ -23,7 +23,7 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 * 1.5.3
 
 ## Prerequisites
-Your PWS needs to be connected to your network. This can be done by using [WS View](#ws view)
+Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool)
 
 ### WS View (WS Tool)
  by `WS View` (and also the 'older' `WS Tool`). With this application you can connect your PWS to the router, so that your PWS can upload weather data to Domoticz.
