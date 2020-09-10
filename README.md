@@ -54,7 +54,7 @@ Now your PWS will start to upload its data to your Domoticz server at the specif
 ### Garni
 Some users of this plugin reported that also a Garni tool can be used with the Garni weather stations. I was not able to test this, but the instructions are something like:
 
-1. Install `Garni` on your mobile device
+1. Install `Garni technology` on your mobile device
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.garnitechnology.app)
 1. Follow the instructions to connect your PWS to your router
 1. In Weather Server Setup:
