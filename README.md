@@ -36,10 +36,10 @@ If supported by your PWS, connect your PWS with `WS View` (and also the 'older' 
     * [Apple App Store](https://apps.apple.com/nl/app/ws-tool/id1125344077)
 1. Follow the instructions to connect your PWS to your router
 1. Goto to Device List in Menu and choose your PWS
-1. Click on Next untill you are on on the `Customized` page (Do **NOT** choose for WeatherUnderground, Ecowitt, WeatherCloud, etc.)
+1. Click on Next untill you are on on the `Customized` page
 1. Choose `Enable`
 1. For `Protocol Type Same As` choose `Wunderground` (preferred)
-1. For `Server IP / Hostname` enter your Domotiz Server ip address, eg. 192.168.0.10
+1. For `Server IP / Hostname` enter your Domoticz Server ip address, eg. 192.168.0.10
 1. If you choose for `Wunderground` protocol:
     * Fill in `Station ID` with a value
     * Fill in `Station Key` with a value
@@ -52,17 +52,17 @@ If supported by your PWS, connect your PWS with `WS View` (and also the 'older' 
 Now your PWS will start to upload its data to your Domoticz server at the specified port. 
 
 ### Garni
-Some users of this plugin reported that also a Garni tool can be used with the Garni weather stations. I was not able to test this, but the instructions are something like:
+Some users of this plugin reported that also a Garni tool can be used with the Garni weather stations. **I was not able to test this**, but the instructions are something like:
 
 1. Install `Garni technology` on your mobile device
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.garnitechnology.app)
 1. Follow the instructions to connect your PWS to your router
 1. In Weather Server Setup:
-    * Fill in `URL` your Domotiz Server ip address, eg. 192.168.0.10
+    * Fill in `URL` your Domoticz Server ip address, eg. 192.168.0.10
     * Fill in `Station ID` with a value
     * Fill in `Station key` with a value
 
-Now your PWS will start to upload its data to your Domoticz server at port 80.
+Now your PWS will start to upload its data to your Domoticz server at port `80`.
 
 ### Configure Domoticz plugin
 Next step is to install the Domoticz plugin. This plugin will automatically create the required devices, listen to the specified port, retrieve the data and update the devices with the latest information.
