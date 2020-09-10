@@ -23,10 +23,10 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 * 1.5.3
 
 ## Prerequisites
-Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool)
+Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni) app.
 
 ### WS View (WS Tool)
- by `WS View` (and also the 'older' `WS Tool`). With this application you can connect your PWS to the router, so that your PWS can upload weather data to Domoticz.
+If supported by your PWS, connect your PWS with `WS View` (and also the 'older' `WS Tool`) to your router by wifi, so that your PWS can upload weather data to Domoticz.
 
 1. Install `WS View` on your mobile device
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsview)
@@ -52,6 +52,17 @@ Your PWS needs to be connected to your network. This can be done by using [WS Vi
 Now your PWS will start to upload its data to your Domoticz server at the specified port. 
 
 ### Garni
+Some users of this plugin reported that also a Garni tool can be used with the Garni weather stations. I was not able to test this, but the instructions are something like:
+
+1. Install `Garni` on your mobile device
+    * [Google Play Store](https://play.google.com/store/apps/details?id=com.garnitechnology.app)
+1. Follow the instructions to connect your PWS to your router
+1. In Weather Server Setup:
+    * Fill in `URL` your Domotiz Server ip address, eg. 192.168.0.10
+    * Fill in `Station ID` with a value
+    * Fill in `Station key` with a value
+
+Now your PWS will start to upload its data to your Domoticz server at port 80.
 
 ### Configure Domoticz plugin
 Next step is to install the Domoticz plugin. This plugin will automatically create the required devices, listen to the specified port, retrieve the data and update the devices with the latest information.
@@ -87,7 +98,9 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
 ## Parameters
 | Name     | Description
 | :---     | :---
-| **Port** | Port number as choosen in WS View, eg. 5000 (displayed on Hardware overview as Address)
+| **Port** | Port number as choosen in WS View, eg. 5000, or 80 if you used the Garni Technology app
+
+The select port is displayed on Hardware overview as Address.
 
 ## Devices
 ![Devices](/images/screendump.jpg)
