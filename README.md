@@ -102,7 +102,7 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
 | :---     | :---
 | **Port** | Port number as choosen in WS View or in the Garni setup, eg. `5000`
 
-The select port is displayed on Hardware overview as Address.
+The selected port is displayed on Hardware overview as Address.
 
 ## Devices
 ![Devices](/images/screendump.jpg)
