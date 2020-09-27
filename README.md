@@ -66,12 +66,12 @@ Some users of this plugin reported that also a Garni tool can be used with the G
 
 Now your Garni PWS will start to upload its data to your Domoticz server at port `5000`.
 
-### Configure Domoticz plugin
+## Configure Domoticz plugin
 Next step is to install the Domoticz plugin. This plugin will automatically create the required devices, listen to the specified port, retrieve the data and update the devices with the latest information.
 
 Unfortunately you can connect your PWS only to **one** Domoticz server!
 
-## Installation
+### Installation
 1. Clone repository into your Domoticz plugins folder
     ```
     cd domoticz/plugins
@@ -86,7 +86,7 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
 1. Enter the Port number as used in WS View
 1. Press Add
 
-## Update
+### Update
 1. Go to plugin folder and pull new version
     ```
     cd domoticz/plugins/Domoticz-PWS-Plugin
@@ -97,7 +97,7 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
     sudo service domoticz.sh restart
     ```
 
-## Parameters
+### Parameters
 | Name     | Description
 | :---     | :---
 | **Port** | Port number as choosen in WS View or in the Garni setup, eg. `5000`
