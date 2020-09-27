@@ -61,8 +61,10 @@ Some users of this plugin reported that also a Garni tool can be used with the G
     * Fill in `URL` your Domoticz Server ip address, eg. 192.168.0.10
     * Fill in `Station ID` with a value
     * Fill in `Station key` with a value
+1. As Garni sends its data to port 80, which is already used by Domoticz (by default), you have to route the data to another port by:
+    * `iptables -t nat -A PREROUTING -s [IP of PWS] -p tcp --dport 80 -j DNAT --to-destination [IP of Domoticz]:5000`
 
-Now your PWS will start to upload its data to your Domoticz server at port `80`.
+Now your Garni PWS will start to upload its data to your Domoticz server at port `5000`.
 
 ### Configure Domoticz plugin
 Next step is to install the Domoticz plugin. This plugin will automatically create the required devices, listen to the specified port, retrieve the data and update the devices with the latest information.
@@ -98,7 +100,7 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
 ## Parameters
 | Name     | Description
 | :---     | :---
-| **Port** | Port number as choosen in WS View, eg. 5000, or 80 if you used the Garni Technology app
+| **Port** | Port number as choosen in WS View or in the Garni setup, eg. `5000`
 
 The select port is displayed on Hardware overview as Address.
 
