@@ -63,8 +63,10 @@ Some users of this plugin reported that also a Garni tool can be used with the G
     * Fill in `Station ID` with a value
     * Fill in `Station key` with a value
 1. As Garni sends its data to port 80, which is already used by Domoticz (by default), you have to route the data to another port by:
-    * Linux (Raspberry PI, etc): `iptables -t nat -A PREROUTING -s [IP of PWS] -p tcp --dport 80 -j DNAT --to-destination [IP of Domoticz]:5000`
-    * Windows: `netsh interface portproxy add v4tov4 connectaddress=[IP of PWS] connectport=80 listenaddress=[IP of Domoticz] listenport=5000` NOT TESTED YET!!!
+    * Linux (Raspberry PI, etc) 
+        * `iptables -t nat -A PREROUTING -s [IP of PWS] -p tcp --dport 80 -j DNAT --to-destination [IP of Domoticz]:5000`
+    * Windows
+        * `netsh interface portproxy add v4tov4 connectaddress=[IP of PWS] connectport=80 listenaddress=[IP of Domoticz] listenport=5000` NOT TESTED YET!!!
 
 Now your Garni PWS will start to upload its data to your Domoticz server at port `5000`.
 
