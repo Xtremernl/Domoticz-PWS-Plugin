@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.10" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.11" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -346,15 +346,16 @@ class BasePlugin:
                     0,
                     "{};{}".format(baromabs, pressure2status(baromabs)),
                 )
-                UpdateDevice(
-                    unit.RAIN,
-                    0,
-                    "{};{}".format(
-                        rainmm * 100, round(self.raincounter + dailyrainmm, 3)
-                    ),
-                    AlwaysUpdate=True,
-                )
-                UpdateDevice(unit.RAIN_RATE, 0, "{}".format(rainmm))
+                if rainmm is not None:
+                    UpdateDevice(
+                        unit.RAIN,
+                        0,
+                        "{};{}".format(
+                            rainmm * 100, round(self.raincounter + dailyrainmm, 3)
+                        ),
+                        AlwaysUpdate=True,
+                    )
+                    UpdateDevice(unit.RAIN_RATE, 0, "{}".format(rainmm))
                 UpdateDevice(
                     unit.HEAT_INDEX, 0, "{}".format(heat_index(temp, humidity))
                 )
