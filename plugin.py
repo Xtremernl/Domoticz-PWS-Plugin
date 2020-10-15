@@ -170,10 +170,12 @@ class BasePlugin:
                     baromabs = pressure_inches2iso(
                         float_or_none(data.get("absbaromin"))
                     )
-                    rainmm = 10 * distance_inch2iso(float_or_none(data.get("rainin")))
-                    dailyrainmm = 10.0 * distance_inch2iso(
-                        float_or_none(data.get("dailyrainin"))
-                    )
+                    rainmm = distance_inch2iso(float_or_none(data.get("rainin")))
+                    if rainmm is not None:
+                        rainmm = 10 * rainmm
+                    dailyrainmm = distance_inch2iso(float_or_none(data.get("dailyrainin")))
+                    if dailyrainmm is not None:
+                        dailyrainmm = 10.0 * dailyrainmm
             elif strVerb == "POST":
                 protocol = "Ecowitt"
                 Domoticz.Debug("Ecowitt protocol")
@@ -196,10 +198,12 @@ class BasePlugin:
                     baromabs = pressure_inches2iso(
                         float_or_none(data.get("baromabsin"))
                     )
-                    rainmm = 10 * distance_inch2iso(float_or_none(data.get("rainin")))
-                    dailyrainmm = 10 * distance_inch2iso(
-                        float_or_none(data.get("dailyrainin"))
-                    )
+                    rainmm = distance_inch2iso(float_or_none(data.get("rainin")))
+                    if rainmm is not None:
+                        rainmm = 10 * rainmm
+                    dailyrainmm = distance_inch2iso(float_or_none(data.get("dailyrainin")))
+                    if dailyrainmm is not None:
+                        dailyrainmm = 10.0 * dailyrainmm
                     softwaretype = data.get("stationtype")
                     solarradiation = float_or_none(data.get("solarradiation"))
                     uv = float_or_none(data.get("uv"))
