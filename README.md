@@ -2,7 +2,7 @@
 I am disappointed in the way Domoticz developes: 
 * 1 stable version per year, I had to wait 4 months until a bug was fixed
 * no reaction on reported bugs, also if you give a direction for solution
-* lost data after upgrade to a new stable version
+* lost data after upgrade to a new stable versions
 * etc.
 
 So I moved to Home Assistant, and have no time/environment to maintain this plugin
