@@ -26,10 +26,10 @@ from enum import IntEnum, unique  # , auto
 @unique
 class unit(IntEnum):
     """
-        Device Unit numbers
+    Device Unit numbers
 
-        Define here your units numbers. These can be used to update your devices.
-        Be sure the these have a unique number!
+    Define here your units numbers. These can be used to update your devices.
+    Be sure the these have a unique number!
     """
 
     TEMP_IND = 1
@@ -59,10 +59,10 @@ class unit(IntEnum):
 @unique
 class used(IntEnum):
     """
-        Constants which can be used to create the devices. Look at onStart where 
-        the devices are created.
-            used.NO, the user has to add this device manually
-            used.YES, the device will be directly available
+    Constants which can be used to create the devices. Look at onStart where
+    the devices are created.
+        used.NO, the user has to add this device manually
+        used.YES, the device will be directly available
     """
 
     NO = 0
@@ -650,14 +650,14 @@ def dew_point(t, h):
 
 
 def wind_chill(t, v):
-    """ Windchill temperature is defined only for temperatures at or below 10 °C 
+    """Windchill temperature is defined only for temperatures at or below 10 °C
     and wind speeds above 4.8 kilometres per hour.
     Args:
         t: temperature in °C
         v: wind speed in m/s
     Returns:
         calculated windchill temperature in °C
-    Ref: 
+    Ref:
         https://en.wikipedia.org/wiki/Wind_chill
     """
     # Calculation expects km/h instead of m/s, so
