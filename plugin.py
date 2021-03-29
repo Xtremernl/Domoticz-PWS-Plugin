@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.11" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.12" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -200,7 +200,7 @@ class BasePlugin:
                     baromabs = pressure_inches2iso(
                         float_or_none(data.get("baromabsin"))
                     )
-                    rainmm = distance_inch2iso(float_or_none(data.get("rainin")))
+                    rainmm = distance_inch2iso(float_or_none(data.get("rainratein")))
                     if rainmm is not None:
                         rainmm = 10 * rainmm
                     dailyrainmm = distance_inch2iso(
