@@ -1,3 +1,12 @@
+# NOT MAINTAINED ANYMORE!!!
+I am disappointed in the way Domoticz developes: 
+* 1 stable version per year, I had to wait 4 months until a bug was fixed
+* no reaction on reported bugs, also if you give a direction for solution
+* lost data after upgrade to a new stable versions
+* etc.
+
+So I moved to Home Assistant, and have no time/environment to maintain this plugin
+
 # Domoticz PWS Plugin
 This Domoticz Plugin allows you to get the data **directly** from your own personal weather station (PWS). So this plugin does **NOT** require that you register your PWS to cloud accounts, like WeatherUnderground (support will finish in the near future!), Ecowitt (also displays your indoor sensors in the cloud!), WeatherCloud, WOW (takes weeks to get key), etc, or the use of WeeWX (extra software).
 
