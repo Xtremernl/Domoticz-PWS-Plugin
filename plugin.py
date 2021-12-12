@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.12" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.0" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -54,6 +54,7 @@ class unit(IntEnum):
     BARO_ABS = 22
     RAIN_RATE = 23
     HEAT_INDEX = 24
+    SOLARLUX = 25
 
 
 @unique
@@ -97,6 +98,7 @@ class BasePlugin:
         [unit.BARO_ABS, "Barometer (absolute)", 243, 26, {}, used.YES],
         [unit.RAIN_RATE, "Rain rate", 243, 31, {"Custom": "0;mm/h"}, used.YES],
         [unit.HEAT_INDEX, "Heat index", 80, 5, {}, used.YES],
+        [unit.SOLARLUX, "Solar radiation", 246, 1, {}, used.NO],
     ]
 
     def __init__(self):
@@ -263,6 +265,9 @@ class BasePlugin:
                 solarradiation = (
                     round(solarradiation, 1) if solarradiation is not None else None
                 )
+                solarlux = (
+                    round(solarradiation * 126.7, 1) if solarradiation is not None else None
+                )
                 # Update devices
                 UpdateDevice(unit.TEMP_IND, 0, "{}".format(tempin))
                 UpdateDevice(unit.TEMP, 0, "{}".format(temp))
@@ -323,6 +328,9 @@ class BasePlugin:
                     unit.SOLAR,
                     int(solarradiation) if solarradiation is not None else 0,
                     "{}".format(solarradiation),
+                )
+                UpdateDevice(
+                    unit.SOLARLUX, 0,"{}".format(solarlux)
                 )
                 UpdateDevice(
                     unit.UVI, int(uv) if uv is not None else 0, "{};{}".format(uv, temp)
