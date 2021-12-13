@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.0" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.1" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -266,7 +266,7 @@ class BasePlugin:
                     round(solarradiation, 1) if solarradiation is not None else None
                 )
                 solarlux = (
-                    round(solarradiation * 126.7, 1) if solarradiation is not None else None
+                    round(solarradiation * 683, 1) if solarradiation is not None else None
                 )
                 # Update devices
                 UpdateDevice(unit.TEMP_IND, 0, "{}".format(tempin))
