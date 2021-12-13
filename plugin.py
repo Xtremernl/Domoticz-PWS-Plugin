@@ -266,7 +266,7 @@ class BasePlugin:
                     round(solarradiation, 1) if solarradiation is not None else None
                 )
                 solarlux = (
-                    round(solarradiation * 683, 1) if solarradiation is not None else None
+                    round(solarradiation * 126.6, 1) if solarradiation is not None else None
                 )
                 # Update devices
                 UpdateDevice(unit.TEMP_IND, 0, "{}".format(tempin))
