@@ -166,7 +166,6 @@ class BasePlugin:
                     windgustms = speed_mph2iso(float_or_none(data.get("windgustmph")))
                     winddir = int_or_none(data.get("winddir"))
                     solarradiation = float_or_none(data.get("solarradiation"))
-                    solarradiation = 0.05
                     uv = float_or_none(data.get("UV"))
                     softwaretype = data.get("softwaretype")
                     baromrel = pressure_inches2iso(float_or_none(data.get("baromin")))
