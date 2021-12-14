@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.1" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.2" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -166,6 +166,7 @@ class BasePlugin:
                     windgustms = speed_mph2iso(float_or_none(data.get("windgustmph")))
                     winddir = int_or_none(data.get("winddir"))
                     solarradiation = float_or_none(data.get("solarradiation"))
+                    solarradiation = 0.05
                     uv = float_or_none(data.get("UV"))
                     softwaretype = data.get("softwaretype")
                     baromrel = pressure_inches2iso(float_or_none(data.get("baromin")))
@@ -262,7 +263,7 @@ class BasePlugin:
                 baromabs = round(baromabs) if baromabs is not None else None
                 rainmm = round(rainmm, 2) if rainmm is not None else None
                 dailyrainmm = round(dailyrainmm, 2) if dailyrainmm is not None else None
-                solarradiation = (
+                solarwm = (
                     round(solarradiation, 1) if solarradiation is not None else None
                 )
                 solarlux = (
@@ -326,8 +327,8 @@ class BasePlugin:
                 UpdateDevice(unit.WIND_DIRECTION, 0, "{}".format(winddir))
                 UpdateDevice(
                     unit.SOLAR,
-                    int(solarradiation) if solarradiation is not None else 0,
-                    "{}".format(solarradiation),
+                    int(solarwm) if solarwm is not None else 0,
+                    "{}".format(solarwm),
                 )
                 UpdateDevice(
                     unit.SOLARLUX, 0,"{}".format(solarlux)
