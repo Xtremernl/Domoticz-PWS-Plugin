@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.13" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.3" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -54,7 +54,8 @@ class unit(IntEnum):
     BARO_ABS = 22
     RAIN_RATE = 23
     HEAT_INDEX = 24
-    SOILMOISTURE = 25
+    SOLARLUX = 25
+    SOILMOISTURE = 26
 
 
 @unique
@@ -98,7 +99,8 @@ class BasePlugin:
         [unit.BARO_ABS, "Barometer (absolute)", 243, 26, {}, used.YES],
         [unit.RAIN_RATE, "Rain rate", 243, 31, {"Custom": "0;mm/h"}, used.YES],
         [unit.HEAT_INDEX, "Heat index", 80, 5, {}, used.YES],
-        [unit.SOILMOISTURE, "Soilmoisture", 243, 6, {}, used.YES],
+        [unit.SOLARLUX, "Solar radiation", 246, 1, {}, used.NO],
+        [unit.SOILMOISTURE, "Soilmoisture", 243, 6, {}, used.NO],
     ]
 
     def __init__(self):
@@ -264,8 +266,11 @@ class BasePlugin:
                 baromabs = round(baromabs) if baromabs is not None else None
                 rainmm = round(rainmm, 2) if rainmm is not None else None
                 dailyrainmm = round(dailyrainmm, 2) if dailyrainmm is not None else None
-                solarradiation = (
+                solarwm = (
                     round(solarradiation, 1) if solarradiation is not None else None
+                )
+                solarlux = (
+                    round(solarradiation * 126.6, 1) if solarradiation is not None else None
                 )
                 soilmoisture = round(soilmoisture, 0) if soilmoisture is not None else None
                 # Update devices
@@ -326,8 +331,11 @@ class BasePlugin:
                 UpdateDevice(unit.WIND_DIRECTION, 0, "{}".format(winddir))
                 UpdateDevice(
                     unit.SOLAR,
-                    int(solarradiation) if solarradiation is not None else 0,
-                    "{}".format(solarradiation),
+                    int(solarwm) if solarwm is not None else 0,
+                    "{}".format(solarwm),
+                )
+                UpdateDevice(
+                    unit.SOLARLUX, 0,"{}".format(solarlux)
                 )
                 UpdateDevice(
                     unit.UVI, int(uv) if uv is not None else 0, "{};{}".format(uv, temp)
