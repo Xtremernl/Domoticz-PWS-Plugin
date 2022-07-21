@@ -7,7 +7,7 @@
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.12" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.0.13" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -54,6 +54,7 @@ class unit(IntEnum):
     BARO_ABS = 22
     RAIN_RATE = 23
     HEAT_INDEX = 24
+    SOILMOISTURE = 25
 
 
 @unique
@@ -97,6 +98,7 @@ class BasePlugin:
         [unit.BARO_ABS, "Barometer (absolute)", 243, 26, {}, used.YES],
         [unit.RAIN_RATE, "Rain rate", 243, 31, {"Custom": "0;mm/h"}, used.YES],
         [unit.HEAT_INDEX, "Heat index", 80, 5, {}, used.YES],
+        [unit.SOILMOISTURE, "Soilmoisture", 243, 6, {}, used.YES],
     ]
 
     def __init__(self):
@@ -178,6 +180,7 @@ class BasePlugin:
                     )
                     if dailyrainmm is not None:
                         dailyrainmm = 10.0 * dailyrainmm
+                    soilmoisture = float_or_none(data.get("soilmoisture"))
             elif strVerb == "POST":
                 protocol = "Ecowitt"
                 Domoticz.Debug("Ecowitt protocol")
@@ -223,6 +226,7 @@ class BasePlugin:
                         if data.get("windchillf") is None
                         else temperature_f2iso(float_or_none(data.get("windchillf")))
                     )
+                    soilmoisture = float_or_none(data.get("soilmoisture"))
             else:
                 Domoticz.Error("Unknown protocol")
                 dataIsValid = False
@@ -263,6 +267,7 @@ class BasePlugin:
                 solarradiation = (
                     round(solarradiation, 1) if solarradiation is not None else None
                 )
+                soilmoisture = round(soilmoisture, 0) if soilmoisture is not None else None
                 # Update devices
                 UpdateDevice(unit.TEMP_IND, 0, "{}".format(tempin))
                 UpdateDevice(unit.TEMP, 0, "{}".format(temp))
@@ -363,6 +368,7 @@ class BasePlugin:
                 UpdateDevice(
                     unit.HEAT_INDEX, 0, "{}".format(heat_index(temp, humidity))
                 )
+                UpdateDevice(unit.SOILMOISTURE, 0, "{}".format(soilmoisture))
 
     def onStart(self):
         if Parameters["Mode6"] == "Debug":
