@@ -20,11 +20,11 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 
 #### EasyWeather
 * 1.4.x
-* 1.5.0
-* 1.5.1
-* 1.5.2
-* 1.5.3
-* 1.5.4
+* 1.5.x
+* 1.6.1
+* 1.6.2
+* 1.6.3
+* 1.6.4
 
 ## Prerequisites
 Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni) app.
@@ -132,7 +132,9 @@ I have created as much devices as possible, so you can select your own favourite
 | **Rain**                 | Current rain rate and daily total
 | **Rain rate**            | Current rain rate
 | **Station**              | Format: [ip adress] ([software]): [Protocol] (`Wunderground` or `Ecowitt`), from your PWS.
-| **Solar radiation**      | Solar radiation
+| **Soilmoisture**         | Soil moisture
+| **Solar radiation**      | Solar radiation W/m<sup>2</sup>
+| **Solar radiation**      | Solar radiation Lux
 | **Temp + Hum**           | Temperature and humidity
 | **Temperature**          | Temperature
 | **Temperature (indoor)** | Temperature
@@ -155,7 +157,6 @@ Information can be found at: https://support.weather.com/s/article/PWS-Upload-Pr
 | :---                   |
 | weather                |
 | soiltempf              |
-| soilmoisture           |
 | leafwetness            |
 | visibility             |
 | Aq* (like AqNO, AqBC ) |
