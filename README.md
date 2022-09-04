@@ -32,7 +32,7 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 * 1.6.4
 
 ## Prerequisites
-Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni) app.
+Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni-not-supported) app.
 
 ### WS View (WS Tool)
 If supported by your PWS, connect your PWS with `WS View Plus` (and also the 'older' `WS View`) to your router by wifi, so that your PWS can upload weather data to Domoticz.
