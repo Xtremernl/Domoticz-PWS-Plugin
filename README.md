@@ -1,5 +1,10 @@
-# NOT MAINTAINED ANYMORE!!!
-But please submit an issue if you have problems with this plugin. There is no garantee, but I will try to find time to help you.
+# Forked version
+This is a forked version from [Xorfor/Domoticz-PWS-Plugin](https://github.com/Xorfor/Domoticz-PWS-Plugin)
+
+# Changes
+* Higher resolution baro sensor
+* Indoor Temperature and humidity sensor
+
 
 # Domoticz PWS Plugin
 This Domoticz Plugin allows you to get the data **directly** from your own personal weather station (PWS). So this plugin does **NOT** require that you register your PWS to cloud accounts, like WeatherUnderground (support will finish in the near future!), Ecowitt (also displays your indoor sensors in the cloud!), WeatherCloud, WOW (takes weeks to get key), etc, or the use of WeeWX (extra software).
@@ -30,14 +35,14 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni) app.
 
 ### WS View (WS Tool)
-If supported by your PWS, connect your PWS with `WS View` (and also the 'older' `WS Tool`) to your router by wifi, so that your PWS can upload weather data to Domoticz.
+If supported by your PWS, connect your PWS with `WS View Plus` (and also the 'older' `WS View`) to your router by wifi, so that your PWS can upload weather data to Domoticz.
 
-1. Install `WS View` on your mobile device
+1. Install `WS View Plus` on your mobile device
+    * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsautool)
+    * [Apple App Store](https://apps.apple.com/nl/app/wsview-plus/id1581353359)
+1. , or `WS Vieuw`
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsview)
     * [Apple App Store](https://apps.apple.com/us/app/ws-view/id1362944193)
-1. , or `WS Tool`
-    * [Google Play Store](https://play.google.com/store/apps/details?id=com.dtston.wstool)
-    * [Apple App Store](https://apps.apple.com/nl/app/ws-tool/id1125344077)
 1. Follow the instructions to connect your PWS to your router
 1. Goto to Device List in Menu and choose your PWS
 1. Click on Next untill you are on on the `Customized` page
@@ -136,8 +141,9 @@ I have created as much devices as possible, so you can select your own favourite
 | **Solar radiation**      | Solar radiation W/m<sup>2</sup>
 | **Solar radiation**      | Solar radiation Lux
 | **Temp + Hum**           | Temperature and humidity
+| **Temp + Hum (indoor)**  | Temperature and humidity (indoor)
 | **Temperature**          | Temperature
-| **Temperature (indoor)** | Temperature
+| **Temperature (indoor)** | Temperature (indoor)
 | **THB**                  | Temperature, humidity and barometer (pressure and prediction)
 | **UVI**                  | UV index
 | **UV Alert**             | UV index + warning level (calculated)
