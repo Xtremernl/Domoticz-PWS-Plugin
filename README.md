@@ -40,7 +40,7 @@ If supported by your PWS, connect your PWS with `WS View Plus` (and also the 'ol
 1. Install `WS View Plus` on your mobile device
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsautool)
     * [Apple App Store](https://apps.apple.com/nl/app/wsview-plus/id1581353359)
-1. , or `WS Vieuw`
+1. , or `WS View`
     * [Google Play Store](https://play.google.com/store/apps/details?id=com.ost.wsview)
     * [Apple App Store](https://apps.apple.com/us/app/ws-view/id1362944193)
 1. Follow the instructions to connect your PWS to your router
