@@ -3,11 +3,11 @@
 #
 # Personal Weather Station
 #
-# Author: Xorfor
+# Author: Xorfor and Xtremer
 #
 
 """
-<plugin key="xfr_pws" name="PWS" author="Xorfor" version="1.1.3" wikilink="https://github.com/Xorfor/Domoticz-PWS-Plugin">
+<plugin key="xfr_pws" name="PWS" author="Xorfor & XtremerNL" version="1.1.3.1" wikilink="https://github.com/Xtremernl/Domoticz-PWS-Plugin/blob/master/plugin.py">
     <params>
         <param field="Address" label="Port" width="40px" required="true" default="5000"/>
         <param field="Mode6" label="Debug" width="100px">
@@ -27,7 +27,6 @@ from enum import IntEnum, unique  # , auto
 class unit(IntEnum):
     """
     Device Unit numbers
-
     Define here your units numbers. These can be used to update your devices.
     Be sure the these have a unique number!
     """
@@ -49,13 +48,14 @@ class unit(IntEnum):
     HUMIDITY_IND = 15
     UV_ALERT = 16
     WIND_DIRECTION = 17
+    TEMP_HUM_IND = 18                 
     STATION = 20
     BARO_REL = 21
     BARO_ABS = 22
     RAIN_RATE = 23
     HEAT_INDEX = 24
     SOLARLUX = 25
-    SOILMOISTURE = 26
+    SOILMOISTURE = 26                              
 
 
 @unique
@@ -84,6 +84,7 @@ class BasePlugin:
         [unit.HUMIDITY, "Humidity", 81, 1, {}, used.YES],
         [unit.HUMIDITY_IND, "Humidity (indoor)", 81, 1, {}, used.YES],
         [unit.TEMP_HUM, "Temp + Hum", 82, 1, {}, used.YES],
+        [unit.TEMP_HUM_IND, "Temp + Hum (indoor)", 82, 1, {}, used.YES],
         [unit.THB, "THB", 84, 1, {}, used.YES],
         [unit.RAIN, "Rain", 85, 1, {}, used.YES],
         [unit.WIND1, "Wind", 86, 1, {}, used.YES],
@@ -262,8 +263,8 @@ class BasePlugin:
                 dewpt = round(dewpt, 1) if dewpt is not None else None
                 windchill = round(windchill, 1) if windchill is not None else None
                 windgustms = round(windgustms, 1) if windgustms is not None else None
-                baromrel = round(baromrel) if baromrel is not None else None
-                baromabs = round(baromabs) if baromabs is not None else None
+                baromrel = round(baromrel, 1) if baromrel is not None else None
+                baromabs = round(baromabs, 1) if baromabs is not None else None
                 rainmm = round(rainmm, 2) if rainmm is not None else None
                 dailyrainmm = round(dailyrainmm, 2) if dailyrainmm is not None else None
                 solarwm = (
@@ -290,6 +291,9 @@ class BasePlugin:
                 UpdateDevice(unit.CHILL, 0, "{}".format(windchill))
                 UpdateDevice(
                     unit.TEMP_HUM, 0, "{};{};{}".format(temp, humidity, humiditystatus)
+                )
+                UpdateDevice(
+                    unit.TEMP_HUM_IND, 0, "{};{};{}".format(tempin, humidityin, indoorhumiditystatus)
                 )
                 UpdateDevice(
                     unit.WIND1,
