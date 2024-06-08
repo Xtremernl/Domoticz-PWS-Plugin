@@ -48,14 +48,14 @@ class unit(IntEnum):
     HUMIDITY_IND = 15
     UV_ALERT = 16
     WIND_DIRECTION = 17
-    TEMP_HUM_IND = 18                 
+    TEMP_HUM_IND = 18 
     STATION = 20
     BARO_REL = 21
     BARO_ABS = 22
     RAIN_RATE = 23
     HEAT_INDEX = 24
     SOLARLUX = 25
-    SOILMOISTURE = 26                              
+    SOILMOISTURE = 26 
 
 
 @unique
