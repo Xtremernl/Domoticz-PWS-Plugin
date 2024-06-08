@@ -26,10 +26,7 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 #### EasyWeather
 * 1.4.x
 * 1.5.x
-* 1.6.1
-* 1.6.2
-* 1.6.3
-* 1.6.4
+* 1.6.1 up to 1.6.6
 
 ## Prerequisites
 Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni-not-supported) app.
@@ -90,7 +87,7 @@ Unfortunately you can connect your PWS only to **one** Domoticz server!
 1. Clone repository into your Domoticz plugins folder
     ```
     cd domoticz/plugins
-    git clone https://github.com/Xorfor/Domoticz-PWS-Plugin.git
+    git clone https://github.com/Xtremernl/Domoticz-PWS-Plugin.git
     ```
 1. Restart domoticz
     ```
