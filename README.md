@@ -26,7 +26,7 @@ In general, if the station is supplied with `EasyWeather` software (version 1.4.
 #### EasyWeather
 * 1.4.x
 * 1.5.x
-* 1.6.1 up to 1.6.6
+* 1.6.1 up to 1.6.7
 
 ## Prerequisites
 Your PWS needs to be connected to your network. This can be done by using [WS View](#ws-view-ws-tool) or the [Garni Technology](#garni-not-supported) app.
